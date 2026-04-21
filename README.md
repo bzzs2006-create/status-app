@@ -1,3 +1,5 @@
+![CI](https://github.com/USERNAME/status-app/actions/workflows/ci.yml/badge.svg)
+
 # Status API
 
 A simple Node.js API deployed in a containerized environment with reverse proxy, HTTPS, and CI/CD pipeline.
