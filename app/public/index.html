@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Status Dashboard</title>
+  <style>
+    body {
+      font-family: Arial;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #0f172a;
+      color: white;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 40px;
+      border-radius: 16px;
+      text-align: center;
+      width: 300px;
+    }
+
+    .status {
+      font-size: 28px;
+      font-weight: bold;
+      color: #22c55e;
+    }
+
+    .time {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="status" id="status">Loading...</div>
+    <div class="time" id="time"></div>
+    <button onclick="loadStatus()">Refresh</button>
+  </div>
+
+  <script>
+    async function loadStatus() {
+      const res = await fetch("/api/status");
+      const data = await res.json();
+
+      document.getElementById("status").innerText =
+        data.status.toUpperCase();
+
+      document.getElementById("time").innerText =
+        "Last update: " + new Date(data.timestamp).toLocaleString();
+    }
+
+    loadStatus();
+  </script>
+</body>
+</html>

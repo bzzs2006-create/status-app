@@ -8,7 +8,8 @@ COPY app/package.json .
 RUN npm install
 
 # app fájlok másolása
-COPY app/ .
+COPY app/index.js .
+COPY app/public .
 
 # port megnyitása
 EXPOSE 3000

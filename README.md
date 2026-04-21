@@ -35,6 +35,7 @@ Client → HTTPS → NGINX → Node.js API
 ```
 status-app/
 ├── app/                # Node.js application
+├   └──public/
 ├── nginx/              # NGINX config + certificates
 ├── Dockerfile
 ├── docker-compose.yml
@@ -62,6 +63,10 @@ docker compose up --build
 App available at:
 
 👉 https://localhost/api/status
+
+Or simple HTML UI at:
+
+👉 https://localhost
 
 ⚠️ Browser will show a warning due to self-signed certificate
 
