@@ -1,17 +1,130 @@
 # Status API
 
-Simple Node.js API containerized with Docker and built with CI/CD.
+A simple Node.js API deployed in a containerized environment with reverse proxy, HTTPS, and CI/CD pipeline.
 
-## Run locally
+---
 
-npm install  
-node index.js  
+## 🚀 Features
 
-## Run with Docker
+* Node.js REST API
+* Containerized with Docker
+* Multi-container setup using Docker Compose
+* Reverse proxy with NGINX
+* HTTPS enabled (self-signed certificate)
+* CI/CD pipeline with GitHub Actions
+* Docker image published to Docker Hub
 
-docker build -t status-app .  
-docker run -p 3000:3000 status-app  
+---
 
-## Endpoint
+## 🧱 Architecture
 
-/api/status
+```
+Client → HTTPS → NGINX → Node.js API
+```
+
+* NGINX handles incoming traffic and SSL termination
+* Node.js app runs in a separate container
+* Services communicate via Docker network
+
+---
+
+## 📦 Project Structure
+
+```
+status-app/
+├── app/                # Node.js application
+├── nginx/              # NGINX config + certificates
+├── Dockerfile
+├── docker-compose.yml
+└── .github/workflows/  # CI/CD pipeline
+```
+
+---
+
+## ▶️ Run Locally (without Docker)
+
+```bash
+cd app
+npm install
+node index.js
+```
+
+---
+
+## 🐳 Run with Docker Compose
+
+```bash
+docker compose up --build
+```
+
+App available at:
+
+👉 https://localhost/api/status
+
+⚠️ Browser will show a warning due to self-signed certificate
+
+---
+
+## 🔐 HTTPS
+
+* Implemented using self-signed certificates
+* NGINX handles SSL termination
+* HTTP traffic is redirected to HTTPS
+
+---
+
+## ⚙️ CI/CD
+
+Using GitHub Actions:
+
+* Triggered on push to `main`
+* Builds Docker image
+* Pushes image to Docker Hub
+
+---
+
+## 📡 API Endpoints
+
+### GET /api/status
+
+Returns application status:
+
+```json
+{
+  "status": "ok",
+  "timestamp": "2026-01-01T12:00:00.000Z"
+}
+```
+
+---
+
+## 🩺 Health Check
+
+### GET /health
+
+Returns:
+
+```
+OK
+```
+
+---
+
+## 🧠 What I Learned
+
+* Containerization with Docker
+* Multi-service architecture with Docker Compose
+* Reverse proxy configuration with NGINX
+* HTTPS setup and certificate handling
+* CI/CD automation with GitHub Actions
+
+---
+
+## 📌 Future Improvements
+
+* Kubernetes deployment
+* Load balancing (multiple app instances)
+* Proper TLS with Let's Encrypt
+* Monitoring and logging
+
+---
