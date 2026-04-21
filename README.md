@@ -1,4 +1,4 @@
-![CI](https://github.com/USERNAME/status-app/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/bzzs2006-create/status-app/actions/workflows/ci.yml/badge.svg)
 
 # Status API
 
